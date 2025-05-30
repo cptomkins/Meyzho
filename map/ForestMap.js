@@ -19,7 +19,8 @@ export function createForestEnvironment(scene) {
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
   ];
 
-
+  scene.tileSize = tileSize;
+  scene.mapGrid = forestMap; // For Easystar
   scene.forestTiles = scene.physics.add.staticGroup();
 
   for (let row = 0; row < forestMap.length; row++) {
@@ -28,11 +29,11 @@ export function createForestEnvironment(scene) {
       const y = row * tileSize + tileSize / 2;
 
       if (forestMap[row][col] === 1) {
-        const tile = scene.add.rectangle(x, y, tileSize, tileSize, 0x2d5a2d);
+        const tile = scene.add.rectangle(x, y, tileSize, tileSize, 0x2d5a2d); // Tree
         scene.forestTiles.add(tile);
-        scene.physics.add.existing(tile, true); // Add static physics body
+        scene.physics.add.existing(tile, true);
       } else {
-        scene.add.rectangle(x, y, tileSize, tileSize, 0x6b8e6b);
+        scene.add.rectangle(x, y, tileSize, tileSize, 0x6b8e6b); // Grass
       }
     }
   }
